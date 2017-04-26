@@ -1,20 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Feb  3 11:35:25 2017
+Created on Wed Apr 26 19:43:21 2017
 
-@author: Zachary Shay
+@author: Zachary
 """
 
 import scrapy
 import json
-    
-class VideoCrawl(scrapy.Spider):
-    name = "video"
 
-    start_urls = [
-        'http://www.w3schools.com/html/html5_video.asp',
-            ]
-            
+class VideoCrawl(scrapy.Spider):
+    name = 'video'
+
+    start_urls = ['https://www.w3schools.com/html/html5_video.asp/']
+
     def parse(self, response):
      # follow links to author pages
         for href in response.css(' a::attr(href)').extract():
