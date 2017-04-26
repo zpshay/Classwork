@@ -7,9 +7,6 @@ Created on Fri Feb  3 11:35:25 2017
 
 import scrapy
 import json
-from flask import Flask
-app = Flask(__name__)
-@app.route("/")
     
 class VideoCrawl(scrapy.Spider):
     name = "video"
@@ -52,6 +49,3 @@ class VideoCrawl(scrapy.Spider):
                         yield{
                             'video': full_url
                         }
-
-if __name__ == "__main__":
-    app.run()
