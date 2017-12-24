@@ -1,0 +1,13 @@
+# the square function returns the square of some integer
+function square (integer n) -> integer:
+[
+  if n == 0 then
+      Result <- 0        # the Result "variable" holds the function's
+                         # return value
+  else
+  [
+      var integer x;     # declares a variable x
+      x <- n * n;
+      Result <- x
+  ]
+]

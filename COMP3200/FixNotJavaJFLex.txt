@@ -1,0 +1,18 @@
+In the notjava.jflex file, perform the following alterations:
+
+1) Delete "import java_cup.runtime.*;" from the first section of the file (user code).
+
+2) Replace the LEXICAL FUNCTIONS section with the following:
+
+%class NotJavaLexer
+%public
+%type Token
+%function getNextToken
+%{    
+    public boolean EOF()
+    {
+        return yy_atEOF;
+    }
+%}
+
+3) Leave the PATTERN DEFINITIONS and LEXICAL RULES section unchanged from the notjava specifications.

@@ -1,0 +1,23 @@
+-----> GCD : Euclid's Algorithm, "Extended Euclidean Algorithm"
+-----> Multiplicative Inverse
+-----> Modular Arithmetic
+
+Mod 5: 0, 1, 2, 3, 4
+4+3 = 2 (mod 5)
+4q = 1
+
+0 - 0
+4 - 4
+8 - 3
+12 - 2
+16 - 1 *
+20 - 1
+
+qL*p = 1 (mod q)
+qL = p1 (mod q)
+
+-pL*q = 1 (mod p)
+-pL = q1 (mod p)
+pL = p - q1
+
+p/q = (pL + pR)/ (qL + qR)

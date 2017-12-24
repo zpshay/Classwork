@@ -1,0 +1,72 @@
+   import java.io.*;
+	import java.util.Scanner;
+	import java.lang.Integer;
+	import java.util.ArrayList;
+	import java.util.Iterator;
+	
+   public class stationreader {
+		private ArrayList<Station> stations;
+		private boolean isRead = false;
+		
+		public stationreader() {
+			this.stations = new ArrayList<Station>(); 
+		}
+		
+      public void stationFile () {
+      
+         String fileName = "isd-history.csv";
+			ArrayList<String> lines = new ArrayList<String>();
+         String line = null;
+		
+         try {
+            FileReader fileReader = new FileReader(fileName);
+          
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+         	line = bufferedReader.readLine();
+           while((line = bufferedReader.readLine()) != null) {
+			  		String replacedLine = line.replaceAll("\"","");
+					lines.add(replacedLine);
+           } 
+			  for (String s : lines) {
+			  	String[] x = s.split(",");
+				this.stations.add(new Station(x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9],x[10]));
+			  }
+            bufferedReader.close(); 
+				this.isRead = true;        
+         }
+            catch(FileNotFoundException ex) {
+               System.out.println(
+                  "Unable to open file '" + 
+                  fileName + "'");                
+            }
+            catch(IOException ex) {
+               System.out.println(
+                  "Error reading file '" 
+                  + fileName + "'");                  
+            }	
+	   }
+		
+		public void findState(String userinput) {
+			if (this.isRead == false) {
+				stationFile();
+			}
+			ArrayList <Station> stationlist = this.stations;
+		   for (Station s : stationlist) {
+			String sname = Station.getSTATE();
+				if (Station.getSTATE().equals(userinput)) {
+					System.out.println(Station.getNAME() + " " + Station.getSTATE + " " + Station.getCTRY);
+				}
+			}
+		}
+		public void getZip(String userinput) {
+
+		
+		}
+
+		public void getActive(String userinput) {
+						
+		}
+
+		
+ }
+	

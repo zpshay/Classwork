@@ -1,0 +1,88 @@
+   import java.io.*;
+	import java.util.Scanner;
+	import java.lang.Integer;
+	import java.util.ArrayList;
+	import java.util.Iterator;
+	
+   public class stationreader {
+	
+		public stationreader() {
+		
+		}
+		
+      public static ArrayList stationFile () {
+      
+         String fileName = "isd-history.csv";
+      	ArrayList stationlist = new ArrayList();
+         String line = null;
+			String sc = "20120127";
+		
+         try {
+            FileReader fileReader = new FileReader(fileName);
+          
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+         	line = bufferedReader.readLine();
+           while((line = bufferedReader.readLine()) != null) {
+			  		String replacedLine = line.replaceAll("\"","");
+			  		String[] stations = replacedLine.split(",");
+					stationlist.add(stations);
+           } 
+			  return stationlist;
+            bufferedReader.close();         
+         }
+            catch(FileNotFoundException ex) {
+               System.out.println(
+                  "Unable to open file '" + 
+                  fileName + "'");                
+            }
+            catch(IOException ex) {
+               System.out.println(
+                  "Error reading file '" 
+                  + fileName + "'");                  
+            }	
+	   }
+		
+		public static void getState(String userinput) {
+			ArrayList stationlist = stationFile();
+			Iterator it = stationlist.iterator( );
+			while (it.hasNext()) {
+				
+				String station = stationlist.get();
+				if (stationlist) {
+					System.out.println("Station Name: " + stationlist[2]);
+					System.out.println("Latitude: " + stationlist[6]);
+					System.out.println("Longitude: " + stationlist[7]);
+				}
+			}
+		}
+		
+		//public static void getZip(String[] filelist, String userinput) {
+	
+		//System.output.println(GLatLng.GLatLng(filelist[6],filelist[7]));
+		
+		
+		
+		//}
+
+		public static void getActive(String userinput) {
+			String stationlist = stationFile();
+			String yearUser = userinput.substring(4,8);
+			String monthUser = userinput.substring(0,2);
+			String dayUser = userinput.substring(2,4);
+			int yearU = Integer.parseInt(yearUser);
+			int monthU = Integer.parseInt(monthUser);
+			int dayU = Integer.parseInt(dayUser);
+			String yearSt = stationlist[9].substring(0,4);
+			String monthSt = stationlist[9].substring(4,6);
+			String daySt = stationlist[9].substring(6,8);		
+			int year = Integer.parseInt(yearSt);
+			int month = Integer.parseInt(monthSt);
+			int day = Integer.parseInt(daySt);
+			
+			
+			
+		}
+
+		
+   }
+	
